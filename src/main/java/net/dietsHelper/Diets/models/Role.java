@@ -1,4 +1,4 @@
-package net.dietsHepler.Diets.models;
+package net.dietsHelper.Diets.models;
 
 
 public enum Role {

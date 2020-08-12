@@ -1,39 +1,44 @@
-package net.dietsHepler.Diets.controllers;
+package net.dietsHelper.Diets.controllers;
 
-import net.dietsHepler.Diets.models.User;
-import net.dietsHepler.Diets.repositories.UserRepository;
+import net.dietsHelper.Diets.forms.UserForm;
+import net.dietsHelper.Diets.models.User;
+import net.dietsHelper.Diets.services.UsersService;
+import net.dietsHelper.Diets.transfer.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
-@Controller
+import static net.dietsHelper.Diets.transfer.UserDto.from;
+
+@RestController
 public class UserController {
 
-    private final UserRepository userRepository;
-
     @Autowired
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    private UsersService usersService;
 
     @GetMapping("/users")
-    public String findAll(Model model){
-        List<User> users = userRepository.findAll();
-        model.addAttribute("users", users);
-        return "user-list";
+    public List<UserDto> getUsers(){
+        return from(usersService.findAll());
     }
 
 
 
-    @GetMapping("user-delete/{id}")
-    public String deleteUser(@PathVariable("id") Long id){
-        userRepository.delete(id);
-        return "redirect:/users";
+    @GetMapping("user-delete/{user-id}")
+    public void deleteUser(@PathVariable("user-id") Long userId){
+       usersService.deleteById(userId);
     }
 
+    @GetMapping("/user/{user-id}")
+    public Optional<User> getUser(@PathVariable("user-id") Long userId){
+        return usersService.findById(userId);
+    }
 
+    @PostMapping("/users")
+    public ResponseEntity<Object> addUser(@RequestBody UserForm  userForm){
+        usersService.signUp(userForm);
+        return ResponseEntity.ok().build();
+    }
 }

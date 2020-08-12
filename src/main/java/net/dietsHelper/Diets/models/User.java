@@ -1,12 +1,12 @@
-package net.dietsHepler.Diets.models;
+package net.dietsHelper.Diets.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.dietsHepler.Diets.forms.UserForm;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -15,12 +15,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class User extends BaseEntity{
-
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
 
     private String login;
 
@@ -41,10 +35,7 @@ public class User extends BaseEntity{
     @Enumerated(value = EnumType.STRING)
     private State state;
 
-    public static User from(UserForm form){
-        return User.builder()
-                .firstName(form.getFirstName())
-                .lastName(form.getLastName())
-                .build();
-    }
+    @OneToMany(mappedBy = "user")
+    List<Token> tokens;
+
 }

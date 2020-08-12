@@ -1,17 +1,31 @@
-package net.dietsHepler.Diets.controllers;
+package net.dietsHelper.Diets.controllers;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import net.dietsHelper.Diets.security.details.UserDetailsImpl;
+import net.dietsHelper.Diets.transfer.UserDto;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+
+@RestController
 public class MainController {
 
     @GetMapping(value = "/")
-    public String main(Model model){
-        model.addAttribute("message", "Hello index");
-        return "index";
+    public ResponseEntity mainPage(){
+        return ResponseEntity.ok("done");
+    }
+
+    @GetMapping(value = "/index-signedIn")
+    public String main(ModelMap model, Authentication authentication){
+        if(authentication == null){
+        return "redirect:/login";
+    }
+        UserDetailsImpl details = (UserDetailsImpl)authentication.getPrincipal();
+        UserDto user = UserDto.from(details.getUser());
+        model.addAttribute("user", user);
+        return "index-signedIn";
     }
 }

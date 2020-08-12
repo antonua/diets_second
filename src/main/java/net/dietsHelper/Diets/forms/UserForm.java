@@ -1,6 +1,7 @@
-package net.dietsHepler.Diets.forms;
+package net.dietsHelper.Diets.forms;
 
 import lombok.Data;
+
 
 @Data
 public class UserForm {
@@ -8,5 +9,6 @@ public class UserForm {
     private String lastName;
     private String login;
     private String email;
-    private String password;
+    private String hashPassword;
+    private String passwordConfirm;
 }

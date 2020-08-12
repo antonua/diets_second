@@ -1,23 +1,22 @@
-package net.dietsHepler.Diets.controllers;
+package net.dietsHelper.Diets.controllers;
 
-import net.dietsHepler.Diets.forms.UserForm;
-import net.dietsHepler.Diets.services.SignUpService;
+import net.dietsHelper.Diets.services.UsersService;
+import net.dietsHelper.Diets.forms.UserForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class SignUpController {
 
-    private final SignUpService service;
-
-    public SignUpController(SignUpService service) {
-        this.service = service;
-    }
+   @Autowired
+   private UsersService service;
 
     @GetMapping("/signUp")
-    public String getSignUpPage(){
+    public String getSignUpPage(Model model){
+        model.addAttribute("user", new UserForm());
         return "signUp";
     }
 

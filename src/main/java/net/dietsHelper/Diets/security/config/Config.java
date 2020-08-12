@@ -1,6 +1,6 @@
-package net.dietsHepler.Diets.security.config;
+package net.dietsHelper.Diets.security.config;
 
-import net.dietsHepler.Diets.models.AuditorAwareImpl;
+import net.dietsHelper.Diets.models.AuditorAwareImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;

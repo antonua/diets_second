@@ -1,23 +1,22 @@
-package net.dietsHepler.Diets.controllers;
+package net.dietsHelper.Diets.controllers;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import net.dietsHelper.Diets.forms.LoginForm;
+import net.dietsHelper.Diets.services.LoginService;
+import net.dietsHelper.Diets.transfer.TokenDto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class LoginController {
 
-    //Login form
-    @GetMapping("/login")
-    public String getLoginPage(){
-        return "login";
-    }
+    @Autowired
+    private LoginService loginService;
 
-    //Login form with error
-    @GetMapping("/login-error")
-    public String loginError(Model model){
-        model.addAttribute("loginError", true);
-        return "login";
+    @PostMapping("/login")
+    public ResponseEntity<TokenDto> login(@RequestBody LoginForm loginForm){
+        return ResponseEntity.ok(loginService.login(loginForm));
     }
 }

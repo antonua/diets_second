@@ -1,4 +1,4 @@
-package net.dietsHepler.Diets;
+package net.dietsHelper.Diets;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

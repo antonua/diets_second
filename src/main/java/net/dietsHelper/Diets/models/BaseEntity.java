@@ -1,4 +1,4 @@
-package net.dietsHepler.Diets.models;
+package net.dietsHelper.Diets.models;
 
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
@@ -18,14 +18,9 @@ public class BaseEntity {
     private Long id;
 
     @CreatedDate
-    @Column(name="created")
     private Date created;
 
     @LastModifiedDate
-    @Column(name = "updated")
     private Date updated;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status")
-    private State state;
 }
