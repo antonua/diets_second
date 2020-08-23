@@ -1,11 +1,29 @@
 //add libs
-let express = require('express');
-let cookieParser = require('cookie-parser');
+const express = require('express')
+const path = require('path')
+const cookieParser = require('cookie-parser')
+const exphbs = require('express-handlebars')
+const mainRoutes = require('./routes/main')
+
+
 //create instance of express-serv
-let app = express();
+const app = express();
+//create instance of express-handlebars
+const hbs = exphbs.create({
+    defaultLayout: 'main',
+    extname: 'hbs'
+})
+//adding engine to hbs
+app.engine('hbs', hbs.engine)
+app.set('view engine', 'hbs')
+app.set('views', 'views')
+
+app.use(express.urlencoded({ extended: true}))
+app.use(mainRoutes)
+app.use(express.static(path.join(__dirname, 'public')))
 //using cookie-parser
 app.use(cookieParser());
-//if user try to use user.html
+//if user try to use user-list.html
 app.get('/html/user-list.html', function(req, res, next){
     //is token exist in cookies
     //if not - redirect to login
