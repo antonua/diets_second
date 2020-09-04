@@ -8,7 +8,9 @@
     "express": "^4.17.1",
     "jQuery": "^1.7.4",
     "jsdom": "^16.4.0",
-    "request": "^2.88.2"
+    "node-fetch": "^2.6.0",
+    "request": "^2.88.2",
+    "response": "^0.18.0"
   },
   "devDependencies": {
     "express-handlebars": "^5.1.0"

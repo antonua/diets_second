@@ -8,31 +8,27 @@ const mainRoutes = require('./routes/main')
 
 //create instance of express-serv
 const app = express();
+
+
 //create instance of express-handlebars
 const hbs = exphbs.create({
     defaultLayout: 'main',
     extname: 'hbs'
 })
+
 //adding engine to hbs
 app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
 app.set('views', 'views')
 
+
 app.use(express.urlencoded({ extended: true}))
 app.use(mainRoutes)
 app.use(express.static(path.join(__dirname, 'public')))
+
 //using cookie-parser
 app.use(cookieParser());
-//if user try to use user-list.html
-app.get('/html/user-list.html', function(req, res, next){
-    //is token exist in cookies
-    //if not - redirect to login
-    let token = req.cookies['Auth-Token'];
-    if(!req.cookies['Auth-Token']){
-        res.redirect('/html/login.html')
-    }
-    next();
-});
+
 //given public folder
 app.use(express.static(__dirname + '/public'));
 //telling app the port is must be 80

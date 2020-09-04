@@ -10,5 +10,4 @@ public class UserForm {
     private String login;
     private String email;
     private String hashPassword;
-    private String passwordConfirm;
 }

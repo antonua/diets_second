@@ -15,13 +15,17 @@
                 <a class="nav__link" href="#">Opinions</a>
 
                 {{#if isLogin}}
-                    <a class="nav__link">{{inlogin}}</a>
+                    <a class="nav__link active">Sign in</a>
                     <a class="nav__link" href="/logout">Log out</a>
                 {{else}}
-                    <a class="nav__link" href="/login">Sign In</a>
+                    <a class="nav__link" href="/login">Sign in</a>
                 {{/if}}
 
-                <a class="nav__link" href="/signUp">Sign Up</a>
+                {{#if isSignUp}}
+                <a class="nav__link active" href="/signUp">Sign Up</a>
+                {{else}}
+                    <a class="nav__link" href="/signUp">Sign up</a>
+                {{/if}}
             </nav>
         </div>
     </div>

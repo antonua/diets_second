@@ -1,5 +1,5 @@
 body {
-	height: 100%;
+	min-height: 100%;
 	margin: 0;
 	padding: 0;
 	font-family: 'Montserrat', sans-serif;
@@ -36,8 +36,9 @@ h1, h2, h3, h4, h5, h6{
 	height: 100vh;
 
 	background:
-			url("/Intro.jpg") center
-			no-repeat;
+			url("/Intro.png") center
+			no-repeat
+			fixed;
 	background-size: cover;
 }
 
@@ -51,7 +52,7 @@ h1, h2, h3, h4, h5, h6{
 
 
 .intro__title {
-	color: #fff;
+	color: #9acd32;
 	font-size: 150px;
 	font-weight: 700;
 	text-transform: uppercase;
@@ -65,13 +66,13 @@ h1, h2, h3, h4, h5, h6{
 	height: 3px;
 	margin: 60px auto ;
 
-	background-color: #fff;
+	background-color: #333;
 }
 
 .intro__suptitle {
 	margin-bottom: 20px;
 	font-size: 72px;
-	color: #fff;
+	color: #9acd32;
 	font-family: 'Kaushan Script', cursive;
 
 }
@@ -98,13 +99,14 @@ h1, h2, h3, h4, h5, h6{
 .header__logo {
 	font-size: 30px;
 	font-weight: 700;
-	color: #fff;
+	color: #333;
 }
 
 /* Nav */
 
 .nav {
 	font-size: 14px;
+	font-weight: bold;
 	text-transform: uppercase;
 }
 
@@ -114,7 +116,7 @@ h1, h2, h3, h4, h5, h6{
 	margin: 0 15px;
 	position: relative;
 
-	color: #fff;
+	color: #333;
 	text-decoration: none;
 
 	transition: color .1s linear;
@@ -157,11 +159,11 @@ h1, h2, h3, h4, h5, h6{
 	vertical-align: top;
 	padding: 8px 30px;
 
-	border: 3px solid #fff;
+	border: 3px solid #9acd32;
 
 	font-size: 14px;
 	font-weight: 700;
-	color: #fff;
+	color: #9acd32;
 	text-transform: uppercase;
 	text-decoration: none;
 
@@ -170,7 +172,7 @@ h1, h2, h3, h4, h5, h6{
 
 .btn:hover {
 	background-color: #fff;
-	color: #333;
+	color: #9acd32;
 }
 
 /* Slider */
@@ -193,11 +195,11 @@ h1, h2, h3, h4, h5, h6{
 	padding: 20px 0;
 	position: relative;
 
-	border-top: 3px solid #ffffff;
+	border-top: 3px solid #333;
 	opacity: .7;
 
 	font-size: 18px;
-	color: #fff;
+	color: #333;
 	text-transform: uppercase;
 }
 
