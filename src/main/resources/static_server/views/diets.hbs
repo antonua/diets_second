@@ -1,0 +1,28 @@
+<body>
+<div class="intro">
+        <div class="diets-page">
+            <div class="container_recipe">
+                <form action="/diets" method="post">
+                <input type="text" id="typeName" name="typeName" placeholder="search"/>
+                <button id="submit" type="submit">Search</button>
+                </form>
+                <h1>{{data.title}}</h1>
+                <div class="disp">
+
+                     <div id="f">
+                     {{#each ingredients}}
+                     <table>
+                         <tr>{{this.original}}</tr>
+                     </table>
+                     {{/each}}
+                     </div>
+                    <div id="s">
+                        <img src="{{data.image}}">
+                    </div>
+             </div>
+                         <p>{{data.instructions}}</p>
+                 </div>
+            </div>
+        </div>
+</div>
+</body>

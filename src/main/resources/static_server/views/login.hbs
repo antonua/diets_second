@@ -4,10 +4,15 @@
 <div class="login-page">
     <div class="form">
         <form action="/login"  method="post">
-            <input type="text" id="login" name="login" placeholder="login"/>
-            <input type="password" id="password" name="password" placeholder="password"/>
-            <input type="checkbox" id="remember-me" name="remember-me">
-            <label for="remember-me">Remember me</label>
+            {{#if isError}}
+                <input type="text" id="login" name="login" placeholder="login"/>
+                <input type="password" id="password" name="password" placeholder="password"/>
+            {{else}}
+                <input type="text" id="login" name="login" placeholder="login"/>
+                <input type="password" id="password" name="password" placeholder="password"/>
+                {{/if}}
+            <input type="checkbox" id="remembeMe" name="rememberMe">
+            <label for="rememberMe">Remember me</label>
             <button id="submit" type="submit">Login</button>
             <p class="message">Not registered? <a href="/signUp">Create an account</a></p>
         </form>

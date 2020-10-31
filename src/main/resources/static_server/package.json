@@ -9,8 +9,10 @@
     "jQuery": "^1.7.4",
     "jsdom": "^16.4.0",
     "node-fetch": "^2.6.0",
+    "nodemon": "^2.0.4",
     "request": "^2.88.2",
-    "response": "^0.18.0"
+    "response": "^0.18.0",
+    "save-dev": "0.0.1-security"
   },
   "devDependencies": {
     "express-handlebars": "^5.1.0"

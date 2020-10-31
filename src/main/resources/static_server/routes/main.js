@@ -1,19 +1,26 @@
 const {Router} = require('express')
 const router = Router()
+
 const logs = require('../models/Login')
 const signUp = require('../models/SignUp')
 const getUsers = require('../models/users')
+const logOut = require('../models/logOut')
+const getDiets = require('../models/Diets')
 
-let nameOfCookie = 'Auth-Token'
+
 let token
+let isL = false
+let username
 
 //home page
 
 router.get('/', (req, res) => {
     res.render('index', {
         title: 'Diets helper',
-        isIndex: true
+        isIndex: true,
+        isLogged: isL
     })
+    console.log(isL)
 })
 
 
@@ -22,7 +29,7 @@ router.get('/', (req, res) => {
 router.get('/login', (req, res) => {
     res.render('login', {
         title: 'Login',
-        isLogin: true
+        isSignIn: true
     })
 })
 
@@ -30,14 +37,18 @@ router.get('/login', (req, res) => {
 
 router.post('/login', async(req, res) => {
     token = await logs.login(req.body.login, req.body.password)
-    console.log(token)
     if(token !== undefined){
-         res.cookie(nameOfCookie, token)
-         res.render('index', {
-            isLogin: true
+        isL = true;
+         res.cookie('Auth-Token', token)
+         username = req.body.login
+         res.render('index',{username: username, isL: isL})
+    }else{
+        res.render('login',{
+            isError: true
         })
-    }
 
+    }
+    console.log(isL)
 })
 
 //SignUp page
@@ -54,26 +65,33 @@ router.get('/signUp', (req, res) =>{
 
 router.post('/signUp', async(req, res) =>{
     await signUp.signUp(req.body.login, req.body.firstName, req.body.lastName, req.body.email, req.body.hashPassword)
-        if(signUp.error){
-            res.render('index',{
-                isSignedUp: true
-            })
+        if(!signUp.error){
+            res.render('login')
         }
 })
 
 //Users page
 
 router.get('/users', (req, res) =>{
-   if(req.headers.cookie.match(nameOfCookie) !== null){
-       getUsers.getUser(req.headers.cookie.substring(11));
-   }
+       getUsers.getUser(res, req);
+})
 
-    // if(res.cookies.nameOfCookie){
-    //     getUsers.getUser()
-    //     res.render('users', {
-    //         title: 'Users'
-    //     })
-    // }
+//Log out
+
+router.get('/logOut', (req,res) =>{
+    logOut.logOut(req,res);
+    isL = false
+})
+
+//Recipes API
+router.get('/diets',async (req,res)=>{
+    let diets = await getDiets.getDiets();
+    res.render('diets', {data: diets, ingredients: diets.extendedIngredients})
+})
+
+router.post('/diets', async (req,res)=>{
+    let diet = await getDiets.getDiets(req.body.typeName);
+    res.render('diets', {data: diet, ingredients: diet.extendedIngredients})
 })
 
 module.exports = router

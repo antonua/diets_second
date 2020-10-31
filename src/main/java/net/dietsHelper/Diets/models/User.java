@@ -38,4 +38,6 @@ public class User extends BaseEntity{
     @OneToMany(mappedBy = "user")
     List<Token> tokens;
 
+//    @OneToMany(mappedBy = "diets")
+//    List<Diet> diets;
 }

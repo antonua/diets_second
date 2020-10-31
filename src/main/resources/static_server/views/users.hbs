@@ -1,17 +1,22 @@
 <body>
-<div class="w3-container w3-blue-grey w3-opacity w3-left-align">
-    <h1>Users list</h1>
-</div>
-<h2>Users</h2>
-<table id="users_table">
-    <tr>
-        <th>Id</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Email</th>
-    </tr>
-</table>
-</div>
-<button type="submit" class="w3-btn w3-green w3-round-large w3-margin"> <a href="/signUp">Create user</a></button>
-</div>
+    <div class="intro">
+        <div class="users-page">
+        <h1>Users list</h1>
+
+
+    <h2>Users</h2>
+
+    <table id="users_table">
+        {{#each data}}
+        <tr>
+            <td>{{this.id}}</td>
+            <td>{{this.login}}</td>
+        </tr>
+        {{/each}}
+    </table>
+    <div>
+        <button type="submit"> <a href="/signUp">Create user</a></button>
+    </div>
+        </div>
+    </div>
 </body>

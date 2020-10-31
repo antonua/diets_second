@@ -1,0 +1,39 @@
+.diets-page {
+    width: 1200px;
+    padding: 8% 0 0;
+    margin: 30px auto;
+}
+
+.container_recipe {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    max-width: 1200px;
+    max-height: 1000px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: left;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+img{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 400px;
+    padding: 5px;
+}
+#f{
+    display: inline-block;
+    width: 50%;
+}
+#s{
+    display: inline-block;
+    width: 50%;
+}
+.disp{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

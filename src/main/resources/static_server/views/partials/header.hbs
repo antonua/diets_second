@@ -6,25 +6,29 @@
 
             <nav class="nav">
                 {{#if isIndex}}
-                   <a class="nav__link active" href="/">Home</a>
+                    <a class="nav__link active" href="/">Home</a>
                 {{else}}
                     <a class="nav__link" href="/">Home</a>
                 {{/if}}
-                <a class="nav__link" href="#">Diets</a>
-                <a class="nav__link" href="#">Service</a>
+                <a class="nav__link" href="/diets">Diets</a>
+                <a class="nav__link" href="#">Articles</a>
                 <a class="nav__link" href="#">Opinions</a>
 
-                {{#if isLogin}}
-                    <a class="nav__link active">Sign in</a>
-                    <a class="nav__link" href="/logout">Log out</a>
+                {{#if isL}}
+                    <a class="nav__link active">{{username}}</a>
+                    <a class="nav__link" href="/logOut">Log out</a>
                 {{else}}
-                    <a class="nav__link" href="/login">Sign in</a>
-                {{/if}}
+                    {{#if isSignIn}}
+                        <a class="nav__link active">Sign in</a>
+                    {{else}}
+                        <a class="nav__link" href="/login">Sign in</a>
+                    {{/if}}
 
-                {{#if isSignUp}}
-                <a class="nav__link active" href="/signUp">Sign Up</a>
-                {{else}}
-                    <a class="nav__link" href="/signUp">Sign up</a>
+                    {{#if isSignUp}}
+                        <a class="nav__link active" href="/signUp">Sign Up</a>
+                    {{else}}
+                        <a class="nav__link" href="/signUp">Sign up</a>
+                    {{/if}}
                 {{/if}}
             </nav>
         </div>
